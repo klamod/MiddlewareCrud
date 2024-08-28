@@ -14,6 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[CrudController::class,'index'])->name('index');
-Route::get('/nambah',[CrudController::class,'arahstore'])->name('arahstore');
-Route::post('/store',[CrudController::class,'arahstore'])->name('store');
+Route::controller(CrudController::class)->group(function()
+{
+    //all
+    Route::get('/arahstore','arahstore')->name('arahstore');
+    Route::post('/store','store')->name('store');
+    Route::delete('/delete/{data}','delete')->name('delete');
+    //edit section
+    Route::get('/arahedit/{data}','arahedit')->name('arahedit');
+    Route::put('/edit/{data}', 'edit')->name('proses');
+
+    //indexing
+    Route::get('/', 'index')->name('index');
+});
+
+
+
+
+
+
+
+//Route::get('/',[CrudController::class,'index'])->name('index');
+//Route::get('/arahs',[CrudController::class,'arahstore'])->name('arahstore');
+//Route::post('/store',[CrudController::class,'store'])->name('store');

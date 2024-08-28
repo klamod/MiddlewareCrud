@@ -11,19 +11,20 @@
 
 <body>
     <h1 align="center">Nambah</h1>
-    <form action="{{route('store')}}" method="POST">
+    <form action="{{route('proses' , $data->id)}}" method="POST">
         @csrf
+        @method('PUT');
         <div class="mb-3">
     <label for="name" class="form-label">Name</label>
-    <input name="name" type="text" class="form-control" id="name"  required>
+    <input name="name" type="text" class="form-control" id="name"  value="{{$data->name}}" required>
   </div>
   <div class="mb-3">
     <label for="julukan" class="form-label">Julukan</label>
-    <input name="julukan" type="text" class="form-control" id="julukan" required>
+    <input name="julukan" type="text" class="form-control" id="julukan" value="{{$data->julukan}}" required>
   </div>
   <div class="mb-3">
     <label for="ciri" class="form-label">Ciri</label>
-    <input name="ciri" type="text" class="form-control" id="ciri" required>
+    <input name="ciri" type="text" class="form-control" id="ciri" value="{{$data->ciri}}" required>
   </div>
 
        <button type="submit" class="btn btn-primary">Klik</button>

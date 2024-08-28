@@ -27,11 +27,11 @@
         <td>{{$dt->julukan}}</td>
         <td>{{$dt->ciri}}</td>
         <td>
-    <form method="POST" action="">
+    <form method="POST" action="{{route('delete',$dt->id)}}">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger">Hapus</button>
-    </form><a href="" class="btn btn-warning">Edit</a>
+    </form><a href="{{route('arahedit',$dt->id)}}" class="btn btn-warning">Edit</a>
     </td>
     </tr>
     @endforeach

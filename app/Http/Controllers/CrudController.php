@@ -17,11 +17,12 @@ class CrudController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama'=>'required',
-            'julukan'=>'required',
+            'name'=>'required',
+            'julukan'=>'required|max:10',
             'ciri'=>'required',
         ]);
-        Post::create($request->all());
+       Post::create($request->all());
+        
         return redirect()->route('index');
     }
 
@@ -29,18 +30,22 @@ class CrudController extends Controller
     {
         return view('crud.nambah');
     }
-    public function delete()
+    public function delete($id)
     {
+        Post::find($id)->delete();
+        return redirect()->route('index');
 
     }
 
-    public function edit()
+    public function edit(Request $request, $id)
     {
-
+        Post::find($id)->update($request->all());
+        return redirect()->route('index');
     }
 
-    public function arahedit()
+    public function arahedit($id)
     {
-
+        $data = Post::find($id);
+        return view('crud.edit', compact('data'));
     }
 }
